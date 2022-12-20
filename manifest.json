@@ -1,0 +1,21 @@
+{
+  "name": "Utility",
+  "version": "0.0.1",
+  "description": "Utility that helps for productivity",
+  "manifest_version": 3,
+  "author": "Saiprasad Devare",
+  "action":{
+      "default_popup": "index.html",
+      "default_title": "Utility"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "offline_enabled": true,
+  "permissions": [
+    "tabs",
+    "storage"
+  ]
+}
