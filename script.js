@@ -2,11 +2,13 @@ document.getElementById("go_local").addEventListener("click", handleRedirect);
 document.getElementById("settings").addEventListener("click", showSetting);
 document.getElementById("save_settings").addEventListener("click", handleSubmit);
 document.getElementById("cancel_settings").addEventListener("click", cancelSubmit);
-
+document.getElementById("go_incognito").addEventListener("click", go_incognito);
 
 function showDefault() {
   main_container = document.getElementById('go_local_container');
   main_container.style.display = "block";
+  main_container_2 = document.getElementById('go_local_container_2');
+  main_container_2.style.display = "block";
   utility_container = document.getElementById('utility_text_box_container');
   utility_container.style.display = "none";
 }
@@ -14,6 +16,8 @@ function showDefault() {
 function showSetting() {
   main_container = document.getElementById('go_local_container');
   main_container.style.display = "none";
+  main_container_2 = document.getElementById('go_local_container_2');
+  main_container_2.style.display = "none";
   utility_container = document.getElementById('utility_text_box_container');
   utility_container.style.display = "block";
   main_container = document.getElementById('utility_text_box');
@@ -46,4 +50,16 @@ function handleSubmit() {
 
 function cancelSubmit() {
   showDefault();
+}
+
+function go_incognito() {
+  chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+    let url = tabs[0].url
+    console.log(url);
+    chrome.windows.create({
+      url: url,
+      incognito: true
+    });
+  });
+
 }
